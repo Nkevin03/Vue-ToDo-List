@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link rel="stylesheet" href="main.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app" class="container">
+        <header class="app-header">
+            <img src="logo.png" alt="bool">
+        </header>
+
+        <section class="new-todo">
+            <input type="text" placeholder="Nuovo todo" v-model.trim='newTodo' @keyup.enter='addTodo' ref="todoInput">
+
+            <button class="button" @click="addTodo">Aggiungi todo</button>
+        </section>
+
+        <main class="todo-section">
+            <i class="fas fa-filter"></i>
+            <a href="#" class="todo-filter" @click.prevent="toggleFilter">
+                Mostra solo todo da completare
+            </a>
+            <ul class="todos-list" v-if="todos.length > 0">
+                <li class="todo" v-for="(todo, index) in todos" v-show="(filterActive === false) || (filterActive === true && todo.completed === false)">
+                    <span class="text" :class="{completed: todo.completed}" @click="updateStatus(index)">
+                        {{ todo.text }}
+                    </span>
+                    <i class="fas fa-times delete" @click="removeTodo(index)"></i>
+                </li>
+                <div class="todo" v-show="filterActive === true && completedTodos === todos.length">
+                    hai completato tutti i todo!
+                </div>
+            </ul>
+            <h2 v-else>Attualmente non hai creato nessun Todo</h2>
+        </main>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

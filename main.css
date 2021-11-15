@@ -1,0 +1,93 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+}
+
+.container{
+    width: 500px;
+}
+
+/* Header */
+
+header{
+    display: flex;
+    justify-content: center;
+}
+
+header img{
+    width: 300px;
+}
+
+/* New todo */
+
+.new-todo{
+    display: flex;
+}
+
+.new-todo input{
+    flex-grow: 1;
+    height: 35px;
+    margin-right: 1.5rem;
+    border: 0;
+    border-bottom-color: currentcolor;
+    border-bottom-style: none;
+    border-bottom-width: 0px;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+    transition: border .3s;
+}
+
+.todo{
+    display: flex;
+    margin: 20px 0;
+}
+
+.todo .text {
+    position: relative;
+    flex-grow: 1;
+    padding: 0 30px;
+    cursor: pointer;
+}
+
+.todo .text.completed::before {
+    background: #fd7e14;
+}
+
+.todo .text::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #000;
+    border-radius: 25px;
+}
+
+.todo .text.completed {
+    text-decoration: line-through;
+}
+
+.todo-section{
+    padding: 20px 0;
+}
+
+.delete:hover{
+    color: red;
+}
+
+.button{
+    background-color: #fd7e14;
+    outline: none;
+    border: none;
+    padding: 0 20px;
+    border-radius: 25px;
+    cursor: pointer;
+}
